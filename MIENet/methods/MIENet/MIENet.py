@@ -282,6 +282,9 @@ class MIENet(BasicModelClass):
         x = self.iter_layer_1(x, logits)
         x = self.iter_layer_2(x)
         logits = self.out_layer_01(x)
+        x = self.iter_layer_1(x, logits)
+        x = self.iter_layer_2(x)
+        logits = self.out_layer_01(x)
         logits = cus_sample(logits, mode="scale", factors=2)
         result_list = [
             {"seg":logits},
